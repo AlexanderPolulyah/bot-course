@@ -1,0 +1,2 @@
+bot name: telegramCourseBot
+username: JSTester2Bot
