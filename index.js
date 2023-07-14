@@ -56,6 +56,8 @@ const start = () => {
     })
 }
 
+start()
+
 //для Vercel
 const express = require('express');
 const app = express();
@@ -70,4 +72,3 @@ app.listen(3000, () => {
   console.log('Webhook запущен');
 });
 
-start()
