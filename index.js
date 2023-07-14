@@ -13,14 +13,14 @@ const startGame = async (chatId) => {
     await bot.sendMessage(chatId, 'Отгадывай', gameOptions)
 }
 
-const start = () => {
-    bot.setMyCommands([
+const start = async () => {
+    await bot.setMyCommands([
         {command: '/start', description: 'Начальное приветствие'},
         {command: '/info', description: 'Получить информацию о пользователе'},
         {command: '/game', description: 'Игра "Угадай цифру"'},
     ])
 
-    bot.on('message', async msg => {
+    await bot.on('message', async msg => {
         const text = msg.text
         const chatId = msg.chat.id
     
@@ -40,7 +40,7 @@ const start = () => {
         // console.log(msg)
     })
 
-    bot.on('callback_query', msg => {
+    await bot.on('callback_query', msg => {
         const data = msg.data
         const chatId = msg.message.chat.id
         if(data === '/again') {
@@ -56,19 +56,20 @@ const start = () => {
     })
 }
 
-start()
+start().then(() => {
+    //для Vercel
+    const express = require('express');
+    const app = express();
 
-//для Vercel
-const express = require('express');
-const app = express();
+    app.use(express.json());
 
-app.use(express.json());
+    app.post(`/`, (req, res) => {
+        bot.handleUpdate(req.body, res);
+    });
 
-app.post(`/`, (req, res) => {
-  bot.handleUpdate(req.body, res);
-});
+    app.listen(3000, () => {
+        console.log('Webhook запущен');
+    });
+})
 
-app.listen(3000, () => {
-  console.log('Webhook запущен');
-});
 
