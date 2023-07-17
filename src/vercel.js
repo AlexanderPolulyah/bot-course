@@ -26,10 +26,10 @@ function startServer(bot) {
     app.post(`/runHook`, urlencodedParser, (req, res) => {
         // bot.handleUpdate(req.body, res);
         // console.log('req', req.body.host2)
-        console.log('req', req.body.host3)
-        console.log('bot', bot)
+        console.log('req', req?.body?.host3)
+        // console.log('bot', bot)
         // bot.setWebHook(req.body.host3)
-        res.status(200).json(`Сервер hook работает! (${req.body.host3})`)
+        res.status(200).json(`Сервер hook работает! (${req?.body?.host3})`)
     });
     
     app.listen(3000, () => {
