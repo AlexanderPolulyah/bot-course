@@ -1,0 +1,2 @@
+Install command: 
+npm install node-telegram-bot-api nodemon express
