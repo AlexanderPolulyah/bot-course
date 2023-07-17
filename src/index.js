@@ -1,5 +1,7 @@
 const TelegramApi = require('node-telegram-bot-api')
 const { againOptions, gameOptions } = require('./options')
+const { startServer } = require('./vercel')
+// import * as vercel from './vercel'
 const token = '6078332961:AAG9UfDnA0AksmKcHz2vSO3CUoi0J8_H-a4'
 
 const bot = new TelegramApi(token, {polling: true})
@@ -13,7 +15,7 @@ const startGame = async (chatId) => {
     await bot.sendMessage(chatId, 'Отгадывай', gameOptions)
 }
 
-const start = async () => {
+const startBot = async () => {
     await bot.setMyCommands([
         {command: '/start', description: 'Начальное приветствие'},
         {command: '/info', description: 'Получить информацию о пользователе'},
@@ -56,20 +58,5 @@ const start = async () => {
     })
 }
 
-start().then(() => {
-    //для Vercel
-    const express = require('express');
-    const app = express();
-
-    app.use(express.json());
-
-    app.post(`/`, (req, res) => {
-        bot.handleUpdate(req.body, res);
-    });
-
-    app.listen(3000, () => {
-        console.log('Webhook запущен');
-    });
-})
-
-
+startBot()
+startServer(bot)
