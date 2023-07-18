@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 function setWebHook(host) {
-    alert('host:', host)
+    // alert('host:', host)
     // bot.setWebHook(host,)
 }
 

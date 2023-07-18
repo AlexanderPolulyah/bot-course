@@ -8,17 +8,27 @@
 </head>
 <body>
 
-    <form name="webhook" action="http://localhost:3000/hello" method="get">
+    <form id="helloForm" action='#' method="get">
         <button type="submit">Say HELLO</button>
     </form>
+    <!--<form name="webhook" action="http://localhost:3000/hello" method="get">
+        <button type="submit">Say HELLO</button>
+    </form>-->
 
-    <form name="webhook" action="http://localhost:3000/runHook" method="post">
+    <form id="webhook" action='#' method="post">
+        <span style="opacity: .7;">Press button, if you want set webhook url to host:</span>
+        <output id="host2" name="host2">localhost</output>
+        <input type="text" name="host3" id="host3" value="" hidden/>
+        <br><br>
+        <button type="submit">Set WebHook URL</button>
+    </form>
+    <!--<form name="webhook" action="/runHook" method="post">
         <span style="opacity: .7;">Press button, if you want set webhook url to host:</span>
         <output id="host2" name="host2">localhost</output>
         <input type="text" name="host3" id="host3" value="htp://localhost:3000" hidden/>
         <br><br>
         <button type="submit">Set WebHook URL</button>
-    </form>
+    </form>-->
     
 <!-- <form name="webhook" action="/api/setWebhook.mjs" method="post">
     <span style="opacity: .7;">Press button, if you want set webhook url to host:</span>
@@ -31,7 +41,13 @@
 11
 <script>
     // document.getElementById('host3').innerText = location.host
-    document.getElementById('host3').value = location?.host
+    if(location?.host) {
+        // debugger
+        document.getElementById('host3').value = location.host
+        baseUrl = location.host
+        setFormActions()
+    }
+
     // document.getElementById('host3').value = 'http://google.com'
     // console.log(location.host)
     // alert(document?.location?.host, window?.location?.host)
@@ -39,4 +55,22 @@
 
     // document.location.host = 'http://google.com'
 </script>
+
+<script>
+    let baseUrl = 'http://localhost:3000'
+
+    function setFormActions() {
+        let form = document.querySelector('#helloForm')
+        if(form) {
+            form['action'] = baseUrl + '/hello'
+        }
+
+        form = document.querySelector('#webhook')
+        if(form) {
+            form['action'] = baseUrl + '/runHook'
+        }
+    }
+    setFormActions()
+</script>
+
 </html>
