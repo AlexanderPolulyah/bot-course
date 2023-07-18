@@ -1,6 +1,6 @@
 const TelegramApi = require('node-telegram-bot-api')
-const { againOptions, gameOptions } = require('./options')
-const { startServer } = require('./vercel')
+const { againOptions, gameOptions } = require('./src/options')
+const { startServer } = require('./src/vercel')
 // import * as vercel from './vercel'
 const token = '6078332961:AAG9UfDnA0AksmKcHz2vSO3CUoi0J8_H-a4'
 
