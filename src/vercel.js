@@ -39,6 +39,7 @@ function startServer(bot) {
     app.listen(3000, () => {
         console.log('Webhook запущен');
     });    
+    console.log('сервер запущен')
 }
 
 module.exports = {startServer}

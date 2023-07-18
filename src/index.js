@@ -56,7 +56,9 @@ const startBot = async () => {
         // bot.sendMessage(chatId, `Ты выбрал цифру ${data} и ${chats[chatId] == data ? 'угадал' : 'не угадал'}`)
         // console.log(msg)
     })
+    console.log('бот запущен')
 }
 
+console.log('запуск бота...')
 startBot()
 startServer(bot)
