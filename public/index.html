@@ -46,12 +46,12 @@
     function setFormActions() {
         let form = document.querySelector('#helloForm')
         if(form) {
-            form['action'] = baseUrl + '/hello'
+            form['action'] = '/hello'
         }
 
         form = document.querySelector('#webhook')
         if(form) {
-            form['action'] = baseUrl + '/runHook'
+            form['action'] = '/runHook'
         }
     }
 
