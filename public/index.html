@@ -39,22 +39,6 @@
 
 </body>
 11
-<script>
-    // document.getElementById('host3').innerText = location.host
-    if(location?.host) {
-        // debugger
-        document.getElementById('host3').value = location.host
-        baseUrl = location.host
-        setFormActions()
-    }
-
-    // document.getElementById('host3').value = 'http://google.com'
-    // console.log(location.host)
-    // alert(document?.location?.host, window?.location?.host)
-    // console.log(document?.location?.host, window?.location?.host)
-
-    // document.location.host = 'http://google.com'
-</script>
 
 <script>
     let baseUrl = 'http://localhost:3000'
@@ -70,7 +54,15 @@
             form['action'] = baseUrl + '/runHook'
         }
     }
+
+    if(location?.host) {
+        // debugger
+        document.getElementById('host3').value = location.host
+        baseUrl = location.host
+    }
+
     setFormActions()
+
 </script>
 
 </html>
